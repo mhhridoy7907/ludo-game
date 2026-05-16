@@ -37,16 +37,21 @@ This project includes complete game logic, animations, bots, and interactive UI.
 - Game ends when a player reaches 4/4 tokens home
 
 ## 📂 Project Structure
-`📁 game code/
+📁 game code/
+
 ├── index.html
+
  ├── style.css (inside HTML)
+ 
  ├── script.js (inside HTML)
+ 
  └── img/
      ├── d0.png
      ├── d1.png
      ├── d2.png
      ├── ...
-     └── d6.png`
+     └── d6.png
+     
 
 
 
