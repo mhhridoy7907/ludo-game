@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+ <html class="no-js"> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=762, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+  </head>
+  <body onload="main()">
+
+    <canvas id="gameBoard" width="480" height="480"></canvas>
+    <div class="container">
+      <div class="game-info">
+        <div class="title">LUDO</div>
+        <div class="p-container">
+          <div id="players"></div>
+          <div class="move-score-container">
+            <div class="move-title">MOVE SCORE:</div>
+            <div id="move-score"></div>
+          </div>
+          <div id="status"></div>
+        </div>
+        <div class="dice-container">
+          <div class="dice">
+            <img id="d0" class="d" src="img/d0.png" />
+            <img id="d1" class="d" style="display: none;" src="img/d1.png" />
+            <img id="d2" class="d" style="display: none;" src="img/d2.png" />
+            <img id="d3" class="d" style="display: none;" src="img/d3.png" />
+            <img id="d4" class="d" style="display: none;" src="img/d4.png" />
+            <img id="d5" class="d" style="display: none;" src="img/d5.png" />
+            <img id="d6" class="d" style="display: none;" src="img/d6.png" />
+          </div>
+        </div>
+        <button disabled id="roll">ROLL DICE</button>
+        <button disabled class="mover" id="move-1">MOVE 1</button>
+        <button disabled class="mover" id="move-2">MOVE 2</button>
+        <button disabled class="mover" id="move-3">MOVE 3</button>
+        <button disabled class="mover" id="move-4">MOVE 4</button>
+      </div>
+      <div class="board">
+        <div class="home-section">
+          <div class="home home-green">
+            <div class="home-square home-square-green"></div>
+            <div class="home-square home-square-green"></div>
+            <div class="home-square home-square-green"></div>
+            <div class="home-square home-square-green"></div>
+          </div>
+        </div>
+        <div class="board-section-v">
+          <div class="square" id="11"></div>
+          <div class="square" id="12"></div>
+          <div class="square" id="13"></div>
+          <div class="square" id="10"></div>
+          <div class="square square-yellow" id="y1"></div>
+          <div class="square square-yellow" id="14"></div>
+          <div class="square" id="9"></div>
+          <div class="square square-yellow" id="y2"></div>
+          <div class="square" id="15"></div>
+          <div class="square" id="8"></div>
+          <div class="square square-yellow" id="y3"></div>
+          <div class="square" id="16"></div>
+          <div class="square" id="7"></div>
+          <div class="square square-yellow" id="y4"></div>
+          <div class="square" id="17"></div>
+          <div class="square" id="6"></div>
+          <div class="square square-yellow" id="y5"></div>
+          <div class="square" id="18"></div>
+        </div>
+        <div class="home-section">
+          <div class="home home-yellow">
+            <div class="home-square home-square-yellow"></div>
+            <div class="home-square home-square-yellow"></div>
+            <div class="home-square home-square-yellow"></div>
+            <div class="home-square home-square-yellow"></div>
+          </div>
+        </div>
+        <div class="board-section-h">
+          <div class="square" id="52"></div>
+          <div class="square square-green" id="1"></div>
+          <div class="square" id="2"></div>
+          <div class="square" id="3"></div>
+          <div class="square" id="4"></div>
+          <div class="square" id="5"></div>
+          <div class="square" id="51"></div>
+          <div class="square square-green" id="g1"></div>
+          <div class="square square-green" id="g2"></div>
+          <div class="square square-green" id="g3"></div>
+          <div class="square square-green" id="g4"></div>
+          <div class="square square-green" id="g5"></div>
+          <div class="square"id="50"></div>
+          <div class="square" id="49"></div>
+          <div class="square" id="48"></div>
+          <div class="square" id="47"></div>
+          <div class="square" id="46"></div>
+          <div class="square" id="45"></div>
+        </div>
+        <div class="board-section-center">
+          <svg viewBox='0 0 100 100'>
+            <polygon class="yellow" points='2,2 50,50 98,2 2,2' />
+            <polygon class="green" points='2,2 50,50 2,98 2,2' />
+            <polygon class="red" points='2,98 50,50 98,98 2,98' />
+            <polygon class="blue" points='98,2 50,50 98,98 98,2' />
+          </svg>
+        </div>
+        <div class="board-section-h">
+          <div class="square" id="19"></div>
+          <div class="square" id="20"></div>
+          <div class="square" id="21"></div>
+          <div class="square" id="22"></div>
+          <div class="square" id="23"></div>
+          <div class="square" id="24"></div>
+          <div class="square square-blue" id="b5"></div>
+          <div class="square square-blue" id="b4"></div>
+          <div class="square square-blue" id="b3"></div>
+          <div class="square square-blue" id="b2"></div>
+          <div class="square square-blue" id="b1"></div>
+          <div class="square" id="25"></div>
+          <div class="square" id="31"></div>
+          <div class="square" id="30"></div>
+          <div class="square" id="29"></div>
+          <div class="square" id="28"></div>
+          <div class="square square-blue" id="27"></div>
+          <div class="square" id="26"></div>
+        </div>
+        <div class="home-section">
+          <div class="home home-red">
+            <div class="home-square home-square-red"></div>
+            <div class="home-square home-square-red"></div>
+            <div class="home-square home-square-red"></div>
+            <div class="home-square home-square-red"></div>
+          </div>
+        </div>
+        <div class="board-section-v">
+          <div class="square" id="44"></div>
+          <div class="square square-red" id="r5"></div>
+          <div class="square" id="32"></div>
+          <div class="square" id="43"></div>
+          <div class="square square-red" id="r4"></div>
+          <div class="square" id="33"></div>
+          <div class="square" id="42"></div>
+          <div class="square square-red" id="r3"></div>
+          <div class="square" id="34"></div>
+          <div class="square" id="41"></div>
+          <div class="square square-red" id="r2"></div>
+          <div class="square" id="35"></div>
+          <div class="square square-red" id="40"></div>
+          <div class="square square-red" id="r1"></div>
+          <div class="square" id="36"></div>
+          <div class="square" id="39"></div>
+          <div class="square" id="38"></div>
+          <div class="square" id="37"></div>
+        </div>
+        <div class="home-section">
+          <div class="home home-blue">
+            <div class="home-square home-square-blue"></div>
+            <div class="home-square home-square-blue"></div>
+            <div class="home-square home-square-blue"></div>
+            <div class="home-square home-square-blue"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="settings">
+      <input type="checkbox" name="show-coordinates" id="show-coordinates">
+      <label for="show-coordinates">Square numbers</label>
+    </div>
+    <div id="game-form">
+      <div style="text-align: center; font-weight: bold; font-size: larger;">New Game: </div>
+      <form>
+        <div id="p1-form">
+          <h2 id="p1-h" class="score-green">Player 1:</h2>
+          <label for="p1-color">Color: </label>
+          <select id="p1-color">
+            <option value="red">Red</option>
+            <option selected value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+          </select><br>
+          <label for="p1-name">Name: </label>
+          <input id="p1-name" size="15" type="text" name="p1-name" placeholder="Player 1">
+        </div>
+        <div id="p2-form">
+          <h2 id="p2-h" class="score-yellow">Player 2:</h2>
+          <label for="p2-color">Color: </label>
+          <select id="p2-color">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option selected value="yellow">Yellow</option>
+          </select><br>
+          <label for="p2-name">Name: </label>
+          <input id="p2-name" size="15" type="text" name="p2-name" placeholder="Player 2" value="RANDOM">
+        </div>
+        <div id="p3-form">
+          <h2 id="p3-h" class="score-blue">Player 3:</h2>
+          <label for="p3-color">Color: </label>
+          <select id="p3-color">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option selected value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+          </select><br>
+          <label for="p3-name">Name: </label>
+          <input id="p3-name" size="15" type="text" name="p3-name" placeholder="Player 3" value="RANDOM">
+        </div>
+        <div id="p4-form">
+          <h2 id="p4-h" class="score-red">Player 4:</h2>
+          <label for="p4-color">Color: </label>
+          <select id="p4-color">
+            <option selected value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+            <option value="yellow">Yellow</option>
+          </select><br>
+          <label for="p4-name">Name: </label>
+          <input id="p4-name" size="15" type="text" name="p4-name" placeholder="Player 4" value="HAL">
+        </div>
+        <div id="submit">
+          <input id="start" type="submit" value="Start Game!" disabled>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
